@@ -1,10 +1,10 @@
 namespace ServiceToggle.Demo.Services
 {
-    public class NewValueService : IValueService
+    public class ValueService : IValueService
     {
         public string GetValue()
         {
-            return "Correct value!!";
+            return "Wrong value";
         }
     }
 }

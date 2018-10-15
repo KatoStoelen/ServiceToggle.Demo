@@ -14,7 +14,7 @@ namespace ServiceToggle.Demo.Extensions
                 @this.Register(
                     Component
                         .For<IValueService>()
-                        .ImplementedBy<OriginalValueService>()
+                        .ImplementedBy<ValueService>()
                         .LifestyleTransient()
                 );
         }
@@ -23,16 +23,18 @@ namespace ServiceToggle.Demo.Extensions
         {
             @this.UseNamingSubSystemWithToggleSupport();
 
-            return
-                @this.Register(
-                    Component
-                        .For<IValueService>()
-                        .ImplementedBy<NewValueService>()
+            return @this;
 
-                        .Replace(typeof(IValueService), typeof(OriginalValueService))
+            // return
+            //     @this.Register(
+            //         Component
+            //             .For<IValueService>()
+            //             .ImplementedBy<NewValueService>()
 
-                        .ResolvableIf(() => client.IsFeatureEnabled("new-value-feature"))
-                );
+            //             .Replace(typeof(IValueService), typeof(ValueService))
+
+            //             .ResolvableIf(() => client.IsFeatureEnabled("new-value-feature"))
+            //     );
         }
     }
 }
